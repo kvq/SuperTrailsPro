@@ -1,0 +1,410 @@
+Options:
+  HideEnableMessage: false
+  UpdateChecker: true
+  UpdateNotify: true
+  DetectInvisPotion: false
+  SuperVanish: false #PremiumVanish & VNP supported
+  EventTrails: true
+  HideInCombat: false
+  HideInCombatTime: 50
+  NoRainItemNames: false
+  RainsWithPackets: true
+  HideSpectatorTrails: false
+  BannedWorlds: 
+    Enable: false
+    Worlds:
+      - 'World1'
+  HideOnMove:
+    Enable: false
+    Particles: false
+    Rains: false
+    Event: false
+    Wings: false
+  SelectSounds: #Support 1.8&1.9+ sounds https://pastebin.com/MJrRQqbx
+    Enable: false
+    Particles: 'NOTE_PLING'
+    Blocks: 'NOTE_PLING'
+    Rains: 'NOTE_PLING'
+    Wings: 'NOTE_PLING'
+    Event: 'NOTE_PLING'
+  SimpleFairiyAI: true #Recommended
+  LanguagesMenu: true
+  DefaultMode: 0
+  PermissionChecker:
+    TimerChecker: false
+    JoinChecker: false
+  BroadcastEventMessages: true
+  Inventory:
+    RemoveItem: 'PAPER'
+    BackItem: 'ARROW'
+    BackItemSlot: 49
+    RemoveItemSlot: 39
+    LanguageItem: 41
+    Particles: true
+    Blocks: true
+    Rains: true
+    Wings: true
+    ParticlesItem: BLAZE_POWDER
+    BlocksItem: 'STAINED_GLASS,3'
+    RainsItem: 'GHAST_TEAR'
+    WingsItem: 'FEATHER'
+    ModesItem: 'ANVIL'
+    LanguagesItemType: 'SLIME_BALL'
+    ParticlesSlot: 19
+    BlocksSlot: 21
+    RainsSlot: 23
+    WingsSlot: 25
+    EventSlot: 4
+    ParticlesMenuSize: 54
+    MainMenuSize: 54
+    BlocksMenuSize: 54
+    PaneLines:
+      Particles: true
+      Blocks: true
+      Rains: true
+      Event: true
+  OnlyPermittedPlayersCanSeeTrails: false
+  DisableSelectMessage: false
+  ForceHighParticleSpawnRate: false
+  HideNoPermissionTrails: false
+  ModeChanger: true
+  ForceDefaultMode: false
+  PreventGhostParticles: true
+  RainItems:
+    - 'AIR;ENCHANTMENT_TABLE;ENDER_CHEST;WOOD_BUTTON;APPLE;DIAMOND;COAL;IRON_INGOT;AIR'
+    - 'AIR;GOLD_INGOT;STRING;FEATHER;WHEAT;BREAD;PORK;GOLDEN_APPLE;AIR'
+    - 'AIR;REDSTONE;PAPER;EGG;CAKE;COOKIE;MELON;EYE_OF_ENDER;AIR'
+    - 'AIR;GHAST_TEAR;BOW;GOLD_NUGGET;EMERALD;NETHER_STAR;ANVIL;GOLDEN_APPLE:1;AIR'
+    - 'AIR;WOOL:1;WOOL:2;WOOL:3;WOOL:4;WOOL:5;WOOL:6;WOOL:7;AIR'
+  BlockTrailsGround: 'GRASS,STONE,WOOD,COAL_BLOCK,COAL_ORE,COBBLESTONE,DIAMOND_BLOCK,IRON_ORE,DIRT,EMERALD_ORE,EMERALD_BLOCK,LEAVES,LEAVES_2,WOOL,SMOOTH_BRICK,SAND,GRASS,GRAVEL,QUARTZ_BLOCK,NETHERRACK,BRICK,HAY_BLOCK,CLAY,STAINED_CLAY,GLOWSTONE,OBSIDIAN,SNOW_BLOCK,SPONGE,BEDROCK,GOLD_BLOCK' #Don't use non-solid blocks and blocks that have different height
+  RainItemTTL: 4
+  MenuByDefault: Main #Main, Blocks, Particles, Rains
+Modes:
+  Circle:
+    MovementSpeed: 30
+    Y: 2.2
+  Magician:
+    Y: 0.5
+  Shooter:
+    LiveTime: 25
+    Speed: 0.4
+  Slinky:
+    MaxFall: 5
+  Helix:
+    Radius: 4
+    ParticlesAmount: 40
+  Dna:
+    Disabled: true
+  Spiral:
+    Disabled: true
+    VerticalSpeed: 0.1
+    MovementSpeed: 30
+    Y: 0
+    Rotate90: true
+MYSQL:
+  Enable: false
+  ip: ''
+  port: ''
+  database: ''
+  login: ''
+  password: ''
+ParticleTrails:
+  Heart:
+    Slot: 10
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Angry:
+    Slot: 11
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Magic:
+    Slot: 12
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Fun:
+    Slot: 13
+    Speed: 1
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Cloud:
+    Slot: 14
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Witch:
+    Slot: 15
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Ender:
+    Slot: 16
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Green:
+    Slot: 17
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Spark:
+    Slot: 18
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Flame:
+    Slot: 19
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  White:
+    Slot: 20
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Note:
+    Slot: 21
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Snow:
+    Slot: 22
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Water:
+    Slot: 23
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Lava:
+    Slot: 24
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Crit:
+    Slot: 25
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Smoke:
+    Slot: 26
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Spell:
+    Slot: 27
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Enchant:
+    Slot: 28
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Splash:
+    Slot: 29
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Slime:
+    Slot: 30
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Snowball:
+    Slot: 31
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Void:
+    Slot: 32
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  LavaPop:
+    Slot: 33
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Breath:
+    Slot: 34
+    Speed: 0.1
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Damage:
+    Slot: 35
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  EndRod:
+    Slot: 36
+    Speed: 0
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Totem:
+    Slot: 37
+    Speed: 0.1
+    Y: 0
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  Soul:
+    Slot: 38
+    Speed: 0
+    Y: 0.2
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+  SoulFire:
+    Slot: 39
+    Speed: 0
+    Y: 0.2
+    Amount: 4
+    OffsetX: 1
+    OffsetY: 1
+    OffsetZ: 1
+BlockTrails:
+  1:
+    Version: 'S18' #(Minimal required version: S18 , S19, S110, S111, S112)
+    Item: '95:0' #Menu item
+    ItemNew: 'WHITE_GLASS' #Unused yet
+    Set: 35,14,35,4,35,5,35,3 #blockid,data,blockid,data,blockid,data,blockid,data (Support unlimited amount of blocks)
+    Slot: 10 #Menu slot
+  2:
+    Version: 'S18'
+    Item: '95:1'
+    ItemNew: 'ORANGE_GLASS'
+    Set: 95,0,95,1,95,2,95,3
+    Slot: 11
+  3:
+    Version: 'S18'
+    Item: '95:2'
+    ItemNew: 'MAGENTA_GLASS'
+    Set: 153,0,112,0,87,0,89,0
+    Slot: 12
+  4:
+    Version: 'S18'
+    Item: '95:3'
+    ItemNew: 'LIGHT_BLUE_GLASS'
+    Set: 159,1,159,2,159,8,159,6
+    Slot: 13
+  5:
+    Version: 'S18'
+    Item: '95:4'
+    ItemNew: 'YELLOW_GLASS'
+    Set: 21,0,129,0,73,0,16,0
+    Slot: 14
+  6:
+    Version: 'S18'
+    Item: '95:5'
+    ItemNew: 'LIME_GLASS'
+    Set: 46,0,33,0,25,0,152,0
+    Slot: 19
+  7:
+    Version: 'S18'
+    Item: '95:6'
+    ItemNew: 'PINK_GLASS'
+    Set: 3,2,2,0,13,0,12,0
+    Slot: 20
+  8:
+    Version: 'S18'
+    Item: '95:7'
+    ItemNew: 'SILVER_GLASS'
+    Set: 42,0,41,0,57,0,133,0
+    Slot: 21
+Wings:
+  Angel:
+    File: 'wing.png'
+    Slot: 20
+    Item: '288:0'
+WingsPatterns:
+  Pattern1:
+    File: 'pattern.png'
+    Slot: 1
+    Item: '160:10'

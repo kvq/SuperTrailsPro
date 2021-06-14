@@ -1,0 +1,13 @@
+name: SuperTrailsPro
+version: v1.2.15
+main: me.kvq.supertrailspro.SuperTrails
+author: [kvq]
+loadbefore: [SuperTrails]
+softdepend: [Citizens]
+commands:
+  trails:
+    description: null
+  supertrails:
+    description: null
+  trailsid:
+    description: null
