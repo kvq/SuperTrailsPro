@@ -11,7 +11,9 @@ public class SuperTrailsPro extends JavaPlugin{
 	
 	private static Plugin plugin;
 	private ServerVersion versionmanager;
-	private STLog logger;
+	private static STLog logger;
+	
+	public static void main(String[] args) { return;}
 	
 	@Override
 	public void onEnable() {
@@ -44,7 +46,7 @@ public class SuperTrailsPro extends JavaPlugin{
 		return versionmanager;
 	}
 
-	public STLog getLogManager() {
+	public static STLog getLogManager() {
 		return logger;
 	}
 	

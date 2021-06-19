@@ -9,6 +9,7 @@ public class ServerVersion {
 	
 	public ServerVersion() throws UnsupportedVersionException {
 		detectVersion();
+		
 	}
 	
 	public static void detectVersion() throws UnsupportedVersionException {
