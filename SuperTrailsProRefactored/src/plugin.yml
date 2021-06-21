@@ -1,6 +1,6 @@
 name: SuperTrailsPro
 version: v1.2.15
-main: me.kvq.supertrailspro.SuperTrails
+main: me.kvq.supertrailspro.SuperTrailsPro
 author: [kvq]
 loadbefore: [SuperTrails]
 softdepend: [Citizens]

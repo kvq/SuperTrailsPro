@@ -1,6 +1,8 @@
 package me.kvq.supertrailspro;
 
-import me.kvq.supertrailspro.exceptions.ObjectNotLoadedException;
+import java.util.Optional;
+import java.util.stream.Stream;
+
 import me.kvq.supertrailspro.exceptions.UnsupportedVersionException;
 
 public class ServerVersion {
@@ -26,9 +28,25 @@ public class ServerVersion {
 		return current;
 	}
 	
+	public static boolean atleast(Version v) {
+		return current.newerOrEqual(v);
+	}
+	
+	public static Version getOlder() {
+		return Version.values()[0];
+	}
+	
+	public static Version getNewest() {
+		return Version.values()[Version.values().length-1];
+	}
+	
 	public static String getVersionFromPackage() {
-	    final String packageName = SuperTrailsPro.getPlugin().getServer().getClass().getPackage().getName();
+	    String packageName = SuperTrailsPro.getPlugin().getServer().getClass().getPackage().getName();
 	    return packageName.substring(packageName.lastIndexOf('.') + 1);
+	}
+	
+	public static Optional<Version> findFromConfig(String version) {
+		return Stream.of(Version.values()).filter(vers -> vers.getOldValue().equalsIgnoreCase(version) ).findFirst();
 	}
 	
 }

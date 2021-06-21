@@ -1,23 +1,61 @@
 package me.kvq.supertrailspro.player;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
-public interface STPlayer {
+import me.kvq.supertrailspro.trails.Trail;
+
+public abstract class STPlayer {
 	
-	public void sendMessage();
+	protected Player player;
+	protected UUID uuid;
+	protected DataContainer data;
 	
-	public Location getLocation();
+
+	public void sendMessage(String msg) {
+		if (!playerExists()) return;
+		player.sendMessage(msg);
+	}
+
+	public Optional<Location> getLocation() {
+		if (!playerExists()) return Optional.empty();
+		return Optional.of(player.getLocation()); 
+	}
+
+	public boolean hasPermission(String s) {
+		if (!playerExists()) return false;
+		return player.hasPermission(s);
+	}
+
+	public UUID getUUID() {
+		return uuid;
+	}
+
+	public String getJSONData() {
+		return null;
+	}
+
+	public String getJSONEventData() {
+		return null;
+	}
 	
-	public boolean hasPermission(String s);
+	private boolean playerExists() {
+		return player != null && player.isOnline();
+	}
+
+	public Optional<Trail> getTrail() {
+		if (!playerExists()) return Optional.empty();
+		return data.getTrail();
+	}
 	
-	public UUID getUUID();
+	public boolean isEmpty() {
+		 if (data==null) return true;
+		 return data.isEmpty();
+	}
 	
-	public String getJSONData();
-	
-	public String getJSONEventData();
-	
-	public void save();
+	abstract public void save();
 
 }

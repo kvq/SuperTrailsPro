@@ -5,22 +5,26 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.UUID;
 
+import javax.swing.DebugGraphics;
+
 import org.bukkit.configuration.file.FileConfiguration;
 
 import me.kvq.supertrailspro.SuperTrailsPro;
 import me.kvq.supertrailspro.event.EventManager;
 import me.kvq.supertrailspro.player.PlayerManager;
 import me.kvq.supertrailspro.player.STPlayer;
+import me.kvq.supertrailspro.player.Storage;
 import me.kvq.supertrailspro.utils.STLog;
 import pro.husk.mysql.MySQL;
 
-public class STDB implements IDB {
+public class STDB implements Storage {
 	
 	protected MySQL db;
 	private FileConfiguration config;
 	protected boolean working = false;
 	private DatabaseWorker worker;
 	protected STLog log = SuperTrailsPro.getLogManager();
+	protected PlayerManager manager = SuperTrailsPro.getPlayerManager() ;
 	
 	public STDB(FileConfiguration config) {
 	
@@ -33,6 +37,8 @@ public class STDB implements IDB {
 		
 		this.working = true;
 		this.worker = new DatabaseWorker();
+		prepareDB();
+		this.worker.start();
 		
 	}
 	
@@ -49,10 +55,10 @@ public class STDB implements IDB {
 	public void loadPlayer(UUID uuid) {
 		DBAction load = new DBAction("SELECT * FROM `supertrailspro` WHERE Player = '" + uuid.toString() + "';", 
 				result -> {
-					String data_json = result.getString("Data");
+					String data = result.getString("Data");
 					String event_json = result.getString("Event");
 					
-					PlayerManager.loadFromJSON(uuid, data_json, event_json);
+					manager.loadFromJSON(uuid, data, event_json);
 				} );
 		this.worker.addQueue(load);
 	}
@@ -60,14 +66,27 @@ public class STDB implements IDB {
 	@Override
 	public void savePlayer(STPlayer player) {
 		
-		String uuid = player.getUUID().toString(), data_json = player.getJSONData(), event_json = player.getJSONEventData();
+		String uuid = player.getUUID().toString(), json_data = player.getJSONData(), event_json = player.getJSONEventData();
 		DBAction save = 
 				new DBAction("INSERT INTO `supertrailspro` (`Player`,`Data`, `Event`) "
-								+ "VALUES ('"+uuid+"', '" + data_json +"', '" + event_json + "') "
-								+ "ON DUPLICATE KEY UPDATE `Data` = `"+data_json+"` , `Event` =  `"+event_json+"`;", 
+								+ "VALUES ('"+uuid+"', '" + json_data +"', '" + event_json + "') "
+								+ "ON DUPLICATE KEY UPDATE `Data` = `"+json_data +"` , `Event` =  `"+event_json+"`;", 
 								r -> {});
 		this.worker.addQueue(save);
 	}
+	
+	@Override
+	public void clearPlayer(STPlayer player) {
+		clearPlayer(player.getUUID());
+		
+	}
+
+	@Override
+	public void clearPlayer(UUID uuid) {
+		DBAction clear = new DBAction("DELETE FROM `supertrailspro` WHERE Player =`"+uuid+"`;", r->{});
+		this.worker.addQueue(clear);
+	}
+	
 	
 	class DatabaseWorker extends Thread{
 		
@@ -94,7 +113,8 @@ public class STDB implements IDB {
 				} catch (SQLException e) {
 					log.error(e);
 					if (action!=null) {
-						if (action.getRetries() < 3) this.addQueue(action.retry()); 
+						if (action.getRetries() < 3) this.addQueue(action.retry());
+						else log.error("SQL Error occured. Unable to retrieve user data from database."); 
 					}
 				}
 			
