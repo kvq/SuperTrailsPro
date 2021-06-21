@@ -1,4 +1,4 @@
-package me.kvq.supertrailspro.praticlelib;
+package me.kvq.supertrailspro.packetlib;
 
 
 import java.lang.reflect.Constructor;
@@ -124,7 +124,7 @@ public final class ReflectionUtils {
 			}
 			return method;
 		}
-		Bukkit.broadcastMessage("123");
+
 		throw new NoSuchMethodException("There is no such method in this class with the specified name and parameter types");
 	}
 
@@ -342,6 +342,12 @@ public final class ReflectionUtils {
 	 * @throws SecurityException If the desired field cannot be made accessible
 	 * @see #setValue(Object, Class, boolean, String, Object)
 	 */
+	
+	public static void setValue(Object instance, String fieldName, Object value) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
+		setValue(instance, instance.getClass(), true, fieldName, value);
+	}
+
+	
 	public static void setValue(Object instance, boolean declared, String fieldName, Object value) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
 		setValue(instance, instance.getClass(), declared, fieldName, value);
 	}

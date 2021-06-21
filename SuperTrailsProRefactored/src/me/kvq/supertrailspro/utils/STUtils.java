@@ -18,6 +18,7 @@ import me.kvq.supertrailspro.Version;
 public class STUtils {
 	
 	private static STLog log = SuperTrailsPro.getLogManager();
+	public static final int MAX_DISTANCE = 25;
 
 	public static ItemStack removeFlags(ItemStack is) {
 		ItemMeta meta = is.getItemMeta();

@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 
 import me.kvq.supertrailspro.ServerVersion;
 import me.kvq.supertrailspro.Version;
-import me.kvq.supertrailspro.praticlelib.ParticleEffect;
+import me.kvq.supertrailspro.packetlib.ParticleEffect;
 import me.kvq.supertrailspro.utils.STUtils;
 
 public enum ParticleTrailsEnum {
@@ -44,11 +44,11 @@ public enum ParticleTrailsEnum {
 	ENDROD(27, "EndRod", ParticleEffect.END_ROD, new ItemStack(Material.getMaterial("END_ROD"))),
 	
 	//1.10+
-	TOTEM(28, "Totem", ParticleEffect.Totem, new ItemStack(Material.getMaterial("TOTEM"))),
+	TOTEM(28, "Totem", ParticleEffect.TOTEM, new ItemStack(Material.getMaterial("TOTEM"))),
 	
 	//1.16+ refection used to bypass legacy Material API		
-	SOUL(29, "Soul", ParticleEffect.Soul, new ItemStack(STUtils.getDirrectMaterial("SOUL_LANTERN"))),
-	SOULFIRE(30, "SoulFire", ParticleEffect.Soul_Fire, new ItemStack(STUtils.getDirrectMaterial("SOUL_CAMPFIRE")));
+	SOUL(29, "Soul", ParticleEffect.SOUL, new ItemStack(STUtils.getDirrectMaterial("SOUL_LANTERN"))),
+	SOULFIRE(30, "SoulFire", ParticleEffect.SOUL_FIRE, new ItemStack(STUtils.getDirrectMaterial("SOUL_CAMPFIRE")));
 	
 
 	private int id; 

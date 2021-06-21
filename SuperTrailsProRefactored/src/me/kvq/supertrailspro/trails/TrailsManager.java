@@ -28,6 +28,7 @@ public class TrailsManager {
 	private void initialize () {
 		initializeParticles();
 		initializeBlocks();
+		initializeRains();
 	}
 	
 	private void registerTrail(Trail t) {
@@ -71,6 +72,14 @@ public class TrailsManager {
 			
 			registerTrail(new TrailBlocks(id.getAndAdd(), key, m, b, type, item, slot,v));
 		}	
+		
+	}
+	
+	private void initializeRains() {
+		registerTrail(new TrailRain());
+	}
+	
+	private void initializeWings() {
 		
 	}
 	

@@ -35,10 +35,11 @@ public class STDB implements Storage {
 	
 		this.db = new MySQL(ip+":"+port+"/"+dbname, login, password);
 		
+		
 		this.working = true;
 		this.worker = new DatabaseWorker();
 		prepareDB();
-		this.worker.start();
+		
 		
 	}
 	

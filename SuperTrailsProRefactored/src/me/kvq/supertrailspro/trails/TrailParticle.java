@@ -3,8 +3,8 @@ package me.kvq.supertrailspro.trails;
 import org.bukkit.inventory.ItemStack;
 
 import me.kvq.supertrailspro.Version;
+import me.kvq.supertrailspro.packetlib.ParticleEffect;
 import me.kvq.supertrailspro.player.STPlayer;
-import me.kvq.supertrailspro.praticlelib.ParticleEffect;
 import me.kvq.supertrailspro.utils.STUtils;
 
 public class TrailParticle extends Trail {
