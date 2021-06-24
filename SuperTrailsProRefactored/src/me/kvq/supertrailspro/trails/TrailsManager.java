@@ -1,5 +1,6 @@
 package me.kvq.supertrailspro.trails;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,6 +43,10 @@ public class TrailsManager {
 	
 	private void registerTrail(Trail t) {
 		trails.put(t.getId(), t);
+	}
+	
+	public void registerPattern(String name, WingsPattern pattern) {
+		
 	}
 	
 	private void initializeParticles() {
@@ -124,7 +129,29 @@ public class TrailsManager {
 	}
 	
 	private void initializePatterns() {
+		File folder = new File(SuperTrailsPro.getPlugin().getDataFolder() + "/wings/patterns");
+		folder.mkdirs();
+		ConfigurationSection selection = STUtils.getConfig().getConfigurationSection("WingsPatterns");
 		
+		for (String key : selection.getKeys(false)){
+			String path = selection.getString(key+".File");File file = new File(folder,path);
+			if (!file.exists() || !file.isFile()) continue;
+			BufferedImage img = null;
+			try {
+				img = WingsParser.loadPattern(file);
+			} catch (IOException e) {
+				log.error("Unable to load pattern: " + key,e);
+			}
+			
+			int slot = selection.getInt(key + ".Slot");
+			String stringit = selection.getString(key + ".Item");
+			ItemStack it = STUtils.readItemStack(stringit);
+			String fxs = selection.getString(key + ".PostFX");
+			
+			WingsPattern pattern = new WingsPattern(key, img, slot, it);
+			registerPattern(key, pattern);
+			
+		}
 	}
 	
 	

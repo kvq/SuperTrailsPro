@@ -29,6 +29,8 @@ public class SuperTrailsPro extends JavaPlugin{
 		
 		registerCommands(); registerEvents();
 		
+		setHeadless(true);
+		
 		} catch (UnsupportedVersionException ex) {
 			logger.error(ex);
 		} catch (Exception ex) {
@@ -63,6 +65,10 @@ public class SuperTrailsPro extends JavaPlugin{
 	
 	public static PlayerManager getPlayerManager() {
 		return SuperTrailsPro.getPlugin().playerManager;
+	}
+	
+	private void setHeadless(boolean v) {
+		System.setProperty("java.awt.headless", v ? "true" : "false");
 	}
 	
 }

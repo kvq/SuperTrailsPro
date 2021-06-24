@@ -4,6 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import me.kvq.supertrailspro.Version;
+import me.kvq.supertrailspro.annotations.ConfigValue;
 import me.kvq.supertrailspro.player.STPlayer;
 import me.kvq.supertrailspro.utils.Counter;
 

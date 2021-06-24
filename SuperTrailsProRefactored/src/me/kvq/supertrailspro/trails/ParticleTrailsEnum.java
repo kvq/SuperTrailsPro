@@ -16,7 +16,6 @@ public enum ParticleTrailsEnum {
 	ANGRY(2, "Angry", ParticleEffect.VILLAGER_ANGRY,new ItemStack(Material.BLAZE_POWDER)),
 	MAGIC(3, "Magic", ParticleEffect.CRIT_MAGIC,new ItemStack(Material.BOOK)),
 	FUN(4, "Fun", ParticleEffect.REDSTONE, new ItemStack(Material.REDSTONE)),
-	
 	CLOUD(5, "Cloud", ParticleEffect.CLOUD, new ItemStack(Material.WEB)),
 	WITCH(6, "Witch", ParticleEffect.SPELL_WITCH, new ItemStack(Material.SKULL_ITEM,1,(byte)0)),
 	ENDER(7, "Ender", ParticleEffect.PORTAL, new ItemStack(Material.ENDER_PEARL)),
@@ -38,7 +37,7 @@ public enum ParticleTrailsEnum {
 	VOID(23, "Void", ParticleEffect.TOWN_AURA, new ItemStack(Material.ENDER_STONE)),
 	LAVAPOP(24, "LavaPop", ParticleEffect.LAVA, new ItemStack(Material.BLAZE_ROD)),
 	
-	//1.9+ getMaterial used to access Materials that do not exists in older API version
+	//1.9+ getMaterial used to access Materials that do not exist in older API version
 	BREATH(25, "Breath", ParticleEffect.DRAGON_BREATH, new ItemStack(Material.getMaterial("DRAGONS_BREATH"))),
 	DAMAGE(26, "Damage", ParticleEffect.DAMAGE, new ItemStack(Material.getMaterial("FERMENTED_SPIDER_EYE"))),
 	ENDROD(27, "EndRod", ParticleEffect.END_ROD, new ItemStack(Material.getMaterial("END_ROD"))),

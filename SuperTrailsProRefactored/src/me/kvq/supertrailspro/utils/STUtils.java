@@ -9,8 +9,6 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import libs.CustomHeads.Heads;
-import libs.CustomHeads.IHeadCreator;
 import me.kvq.supertrailspro.ServerVersion;
 import me.kvq.supertrailspro.SuperTrailsPro;
 import me.kvq.supertrailspro.Version;
@@ -104,7 +102,7 @@ public class STUtils {
 		String str[] = s.split(s.contains(",") ? "," :":");
 		String name = str[0];
 		if (s.startsWith("customhead=")) {
-			return getHeadCreator().createItemStack(s.split("=")[1],new ItemStack(Material.SKULL_ITEM));
+			return getCustomSkull(s.split("=")[1],new ItemStack(Material.SKULL_ITEM)).getItem();
 		} 
 		
 		name = name.toUpperCase();
@@ -116,8 +114,12 @@ public class STUtils {
 		
 	}
 	
-	public static IHeadCreator getHeadCreator() {
-		return Heads.getHeadCreator();
+	public static CustomSkull getCustomSkull(String ID) {
+		return new CustomSkull(ID);
+	}
+	
+	public static CustomSkull getCustomSkull(String ID,ItemStack fallback) {
+		return new CustomSkull(ID,fallback);
 	}
 	
 }

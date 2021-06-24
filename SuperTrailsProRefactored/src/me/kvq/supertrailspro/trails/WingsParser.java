@@ -1,5 +1,7 @@
 package me.kvq.supertrailspro.trails;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -59,6 +61,22 @@ public class WingsParser {
 		return new int[] {red,green,blue};
 	}
 	
+	private static BufferedImage crop(BufferedImage img) {
+		if (img.getWidth() == 14 && img.getHeight() == 14) return img;
+		
+		BufferedImage crop = new BufferedImage(
+			   14, 14, BufferedImage.TYPE_INT_RGB);
+		Graphics2D graphics = crop.createGraphics();
+		graphics.setBackground(Color.WHITE);
+		graphics.drawImage(img, 0, 0, null);
+		graphics.dispose();
+		return crop;
+	}
+	
+	
+	public static BufferedImage loadPattern(File f) throws IOException {
+		return crop(ImageIO.read(f));
+	}
 
 
 }
