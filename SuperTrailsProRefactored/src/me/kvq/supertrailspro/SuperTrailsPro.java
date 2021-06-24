@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import me.kvq.supertrailspro.commands.SuperTrailsCmd;
 import me.kvq.supertrailspro.exceptions.UnsupportedVersionException;
 import me.kvq.supertrailspro.player.PlayerManager;
+import me.kvq.supertrailspro.trails.TrailsManager;
 import me.kvq.supertrailspro.utils.STConsoleLogger;
 import me.kvq.supertrailspro.utils.STLog;
 
@@ -14,6 +15,7 @@ public class SuperTrailsPro extends JavaPlugin{
 	private ServerVersion versionmanager;
 	private static STLog logger;
 	private PlayerManager playerManager;
+	private static TrailsManager trailsManager;
 	
 	public static void main(String[] args) { return;}
 	
@@ -25,9 +27,12 @@ public class SuperTrailsPro extends JavaPlugin{
 		logger = new STConsoleLogger(true, true, true, false);
 		
 		versionmanager = new ServerVersion();
-		playerManager = new PlayerManager();
+		
 		
 		registerCommands(); registerEvents();
+		
+		trailsManager = new TrailsManager();
+		playerManager = new PlayerManager();
 		
 		setHeadless(true);
 		
@@ -69,6 +74,10 @@ public class SuperTrailsPro extends JavaPlugin{
 	
 	private void setHeadless(boolean v) {
 		System.setProperty("java.awt.headless", v ? "true" : "false");
+	}
+	
+	public static TrailsManager getTrailsManager() {
+		return trailsManager;
 	}
 	
 }

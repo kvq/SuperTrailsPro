@@ -46,7 +46,11 @@ public class TrailsManager {
 	}
 	
 	public void registerPattern(String name, WingsPattern pattern) {
-		
+		patterns.put(name, pattern);
+	}
+	
+	public Optional<Trail> getFromID(int id) {
+		return Optional.ofNullable(trails.get(id));
 	}
 	
 	private void initializeParticles() {

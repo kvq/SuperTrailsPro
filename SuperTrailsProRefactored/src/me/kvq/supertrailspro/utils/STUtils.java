@@ -30,23 +30,17 @@ public class STUtils {
 	@SuppressWarnings("deprecation")
 	public static Material getDirrectMaterial(String name) {
 		
-		if (Character.isDigit(name.charAt(0))) {
-			return Material.getMaterial(Integer.parseInt(name));
-		}
+		if (Character.isDigit(name.charAt(0))) return Material.getMaterial(Integer.parseInt(name));
+		
 		Material ma = Material.getMaterial(name);
 		if (ma!=null) return ma;
-		
 		try {
 			Class<?> clz = Class.forName("org.bukkit.Material");
-			
 			Method m = clz.getDeclaredMethod("getMaterial", String.class);
-			
 			Object o = m.invoke(null, name);
-			
 			return (Material)o;
-			
 		} catch (Exception e) {
-			
+			log.error(e);
 		}
 		return Material.STONE;
 		
