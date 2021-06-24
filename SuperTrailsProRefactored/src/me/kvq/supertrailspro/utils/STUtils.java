@@ -67,6 +67,10 @@ public class STUtils {
 		return config.getInt(key);
 	}
 	
+	public static double getConfigDouble(String key) {
+		return config.getDouble(key);
+	}
+	
 	@SuppressWarnings("deprecation")
 	public static ItemStack readItemStack(String from){
 		try {

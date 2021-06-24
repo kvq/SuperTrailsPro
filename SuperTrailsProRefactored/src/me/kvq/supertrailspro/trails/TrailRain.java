@@ -5,7 +5,7 @@ import me.kvq.supertrailspro.player.STPlayer;
 public class TrailRain extends Trail{
 	
 	public TrailRain(){
-		super(201,null,null);
+		super(201,null,null, 0);
 	}
 	
 	@Override

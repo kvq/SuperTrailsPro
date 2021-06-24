@@ -10,39 +10,39 @@ import me.kvq.supertrailspro.utils.STUtils;
 public class TrailParticle extends Trail {
 
 	protected ParticleEffect pef;
-	protected ItemStack i;
-
-	protected int slot;
 	
+	private float speed, offsetX,offsetY,offsetZ;
+	private double Y;
+	private int amount; 
+
 	public TrailParticle(int id,String n,ParticleEffect p,ItemStack i,Version v){
-		super(id,n,v);
+		super(id,n,v,i,0);
 		prepare(p, i);
 	}
 	
 	public TrailParticle(int id,String n,ParticleEffect p,ItemStack i){
-		super(id,n);
+		super(id,n,i,0);
 		prepare(p, i);
 	}
 	
 	private void prepare(ParticleEffect effect, ItemStack item) {
 		this.pef = effect;
-		this.i = item;
 		if (name == null) return;
-		slot = STUtils.getConfigInt("ParticleTrails." + getName() + ".Slot");
-	}
-	
-	
-	public ItemStack getIS(){
-		return i;
-	}
+		this.slot = getConfigInt("Slot");
+		this.speed = (float) getConfigDouble("Speed");
+		this.Y = getConfigDouble("Y");
 		
+		this.offsetX = (float) getConfigDouble("OffsetX");
+		this.offsetY = (float) getConfigDouble("OffsetY");
+		this.offsetZ = (float) getConfigDouble("OffsetZ");
+	
+		this.amount = getConfigInt("Amount");
+	}
+	
 	public ParticleEffect getEff(){
 		return pef;
 	}
 	
-	public int getSlot() {
-		return slot;
-	}
 	
 	@Override
 	public TrailType getType(){
@@ -52,6 +52,42 @@ public class TrailParticle extends Trail {
 	@Override
 	public String getPermission() {
 		return "trails.particle." + this.name;
+	}
+	
+	private double getConfigDouble(String value) {
+		return STUtils.getConfigDouble("ParticleTrails." + getName() + "." + value);
+	}
+	
+	private int getConfigInt(String value) {
+		return STUtils.getConfigInt("ParticleTrails." + getName() + "." + value);
+	}
+	
+	public ParticleEffect getPef() {
+		return pef;
+	}
+
+	public float getSpeed() {
+		return speed;
+	}
+
+	public float getOffsetX() {
+		return offsetX;
+	}
+
+	public float getOffsetY() {
+		return offsetY;
+	}
+
+	public float getOffsetZ() {
+		return offsetZ;
+	}
+
+	public double getY() {
+		return Y;
+	}
+
+	public int getAmount() {
+		return amount;
 	}
 
 	@Override

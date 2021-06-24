@@ -1,17 +1,20 @@
 package me.kvq.supertrailspro.trails;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 
-import com.google.common.util.concurrent.SettableFuture;
-
 import me.kvq.supertrailspro.ServerVersion;
 import me.kvq.supertrailspro.SuperTrailsPro;
 import me.kvq.supertrailspro.Version;
+import me.kvq.supertrailspro.trails.fx.TrailFX;
 import me.kvq.supertrailspro.utils.Counter;
 import me.kvq.supertrailspro.utils.STLog;
 import me.kvq.supertrailspro.utils.STUtils;
@@ -19,16 +22,22 @@ import me.kvq.supertrailspro.utils.STUtils;
 public class TrailsManager {
 	
 	private HashMap<Integer, Trail> trails = new HashMap<>();
+	private HashMap<String, WingsPattern> patterns = new HashMap<>();
+	private HashMap<String, TrailFX> trailfxs = new HashMap<>();
+	
 	private STLog log = SuperTrailsPro.getLogManager();	
 	
 	public TrailsManager() {
 		this.initialize();
 	}
 	
-	private void initialize () {
+	private void initialize() {
 		initializeParticles();
 		initializeBlocks();
 		initializeRains();
+		initializeFXs();
+		initializeWings();
+		initializePatterns();
 	}
 	
 	private void registerTrail(Trail t) {
@@ -79,8 +88,64 @@ public class TrailsManager {
 		registerTrail(new TrailRain());
 	}
 	
-	private void initializeWings() {
+	private void initializeFXs() {
 		
+	}
+	
+	private void initializeWings() {
+		Counter counter = new Counter(300);
+		File folder = new File(SuperTrailsPro.getPlugin().getDataFolder() + "/wings/models");
+		folder.mkdirs();
+		ConfigurationSection selection = STUtils.getConfig().getConfigurationSection("Wings");
+		
+		for (String key : selection.getKeys(false)){
+			
+			String path = selection.getString(key+".File");File file = new File(folder,path);
+			if (!file.exists() || !file.isFile()) continue;
+			byte[][] buffer;
+			try {
+			buffer = WingsParser.parseImage(file);
+			} catch (IOException exe) {
+				log.error("Unable to load wings: " + key,exe);
+				continue;
+			}
+			
+			int slot = selection.getInt(key + ".Slot");
+			String stringitem = selection.getString(key + ".Item");
+			ItemStack item = STUtils.readItemStack(stringitem);
+			boolean movement = selection.getBoolean(key + ".Movement");
+
+			String stringfxs = selection.getString(key + ".PostFX");
+			TrailFX[] fxs = parseFX(stringfxs);
+						
+			registerTrail(new TrailWings(counter.getAndAdd(), key, item, fxs, slot, buffer, movement));
+			
+		}
+	}
+	
+	private void initializePatterns() {
+		
+	}
+	
+	
+	private TrailFX[] parseFX(String fxs) {
+		if (fxs == null) return new TrailFX[0];
+		fxs = fxs.replaceAll(" ", "");
+		if (fxs == "") return new TrailFX[0];
+		
+		List<TrailFX> fxlist = new ArrayList<>();
+		
+		for (String fxname : fxs.split(",")) {
+			Optional<TrailFX> fx = findFX(fxname);
+			fx.ifPresent(f -> fxlist.add(f));
+		}
+		
+		return fxlist.toArray(new TrailFX[fxlist.size()]);
+	}
+	
+	private Optional<TrailFX> findFX(String name) {
+		if (name == null) return Optional.empty();
+		return Optional.ofNullable(trailfxs.get(name));
 	}
 	
 	

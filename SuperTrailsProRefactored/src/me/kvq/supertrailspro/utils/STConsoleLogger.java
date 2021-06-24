@@ -57,5 +57,12 @@ public class STConsoleLogger implements STLog{
 	private void sendConsoleMessage(String str, ConsoleColor color) {
 		sendConsoleMessage(color.getColorCode() + str);
 	}
+
+	@Override
+	public void error(String str, Exception e) {
+		error(str);
+		error(e);
+		
+	}
 	
 }

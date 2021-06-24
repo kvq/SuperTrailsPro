@@ -14,24 +14,17 @@ public class TrailBlocks extends Trail{
 	private int type = 0; //0 = only solid blocks, 1 = everywhere
 	public Counter tick = new Counter(m.length-1);
 	
-	private ItemStack is;
-	private int slot;
 	
 	public TrailBlocks(int id,String s,Material m[],byte b[],int type,ItemStack is,int slot,Version v){
-		super(id,s,v);
-		this.m = m;
-		this.b = b;
-		this.type = type;
-		this.is = is;
-		this.slot = slot+1;
+		this(id, s, m, b, type, is, slot);
+		this.v = v;
 	}
 	
 	public TrailBlocks(int id,String s,Material m[],byte b[],int type,ItemStack is,int slot){
-		super(id,s);
-		this.m = m;
+		super(id,s,is,slot);
+		this.m = m; 
 		this.b = b;
 		this.type = type;
-		this.is = is;
 		this.slot = slot+1;
 	}
 	
@@ -61,13 +54,6 @@ public class TrailBlocks extends Trail{
 		return "trails.block." + this.name;
 	}
 	
-	public ItemStack getItem() {
-		return is;
-	}
-	
-	public int getSlot() {
-		return slot;
-	}
 	
 	public void nextTick() {
 		tick.add();
