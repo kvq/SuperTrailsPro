@@ -16,8 +16,6 @@ import me.kvq.supertrailspro.utils.STJson;
 public class DataContainer {
 	
 	private Trail trail;
-	//private TrailSettings settings; 
-	//settings.set("value",) settings.get("value");
 	private EventDataContainer event;
 	private TrailsManager manager = SuperTrailsPro.getTrailsManager();
 	private int mode = 0;
@@ -59,28 +57,10 @@ public class DataContainer {
 			.readString("pattern", pattern -> setPattern(pattern));
 			
 			rain = itemFromJson(j.getSubJson("rain"));
-//			Collectors.tomap
 			
 		} catch (ParseException e) {
 			throw new InvalidDataException(json);
 		}
-		
-		
-//		JSONObject obj = new JSONObject();
-//		obj.put("id", trail);
-//		obj.put("mode", mode);
-//		obj.put("w1",W1);
-//		obj.put("w2",W2);
-//		obj.put("w3",W3);
-//		obj.put("pattern",pattern);
-//		
-//		if (rain != null) {
-//		JSONObject rainobj = new JSONObject();
-//		int typeid = STUtils.idFix(rain.getTypeId());
-//		byte data = rain.getData().getData();
-//		rainobj.put("itemID", typeid);
-//		rainobj.put("dataID", data);
-//		obj.put("rain", rainobj);
 		
 	}
 	

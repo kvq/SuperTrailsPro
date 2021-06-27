@@ -1,8 +1,9 @@
 package me.kvq.supertrailspro.utils;
 
+import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -19,6 +20,10 @@ public class STJson {
 	
 	public STJson(JSONObject obj) {
 		this.obj = obj;
+	}
+	
+	public STJson() {
+		this.obj = new JSONObject();
 	}
 	
 	public int readInt(String key) {
@@ -46,7 +51,7 @@ public class STJson {
 	
 	public STJson getSubJson(String key) {
 		JSONObject sub = (JSONObject) obj.get(key);
-		if (sub!=null) new STJson(sub);
+		if (sub!=null) return new STJson(sub);
 		return null;
 	}
 	
@@ -66,6 +71,23 @@ public class STJson {
 	}
 	public void setString(String key,String value) {
 		obj.put(key, value);
+	}
+	
+	public void setList(String key, List<?> array) {
+		JSONArray jsarray = new JSONArray();
+		jsarray.addAll(array);
+		obj.put(key, jsarray);
+	}
+	
+	public List<?> getList(String key) {
+		JSONArray jsarray = (JSONArray) obj.get(key);
+		return jsarray;	
+	}
+	
+	public STJson getList(String key, Consumer<List<?>> consumer) {
+		List<?> list = getList(key);
+		if (list!=null) consumer.accept(list);
+		return this;
 	}
 	
 	public String toString() {

@@ -13,6 +13,7 @@ public abstract class STPlayer {
 	protected Player player;
 	protected UUID uuid;
 	protected DataContainer data;
+	protected String name;
 	
 
 	public void sendMessage(String msg) {
@@ -54,6 +55,10 @@ public abstract class STPlayer {
 	public boolean isEmpty() {
 		 if (data==null) return true;
 		 return data.isEmpty();
+	}
+	
+	public String getPlayerName() {
+		return name == null ? "Unknown" : name;
 	}
 	
 	abstract public void save();

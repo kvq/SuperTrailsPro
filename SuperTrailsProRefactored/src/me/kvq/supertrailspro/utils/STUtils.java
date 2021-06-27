@@ -17,6 +17,7 @@ public class STUtils {
 	
 	private static STLog log = SuperTrailsPro.getLogManager();
 	public static final int MAX_DISTANCE = 25;
+	public static final int DATABASE_RETRIES_LIMIT = 5;
 
 	public static ItemStack removeFlags(ItemStack is) {
 		ItemMeta meta = is.getItemMeta();

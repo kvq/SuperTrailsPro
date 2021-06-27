@@ -29,6 +29,8 @@
   </build>
   
   <repositories>
+  
+  
   	<repository>
     	<id>husk</id>
     <url>https://maven.husk.pro/snapshots/</url>
@@ -36,6 +38,14 @@
   </repositories>
   
    <dependencies>
+   
+   <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.25</version>
+	</dependency>
+   
+   
    	<dependency>
     	<groupId>pro.husk</groupId>
     	<artifactId>mysql</artifactId>

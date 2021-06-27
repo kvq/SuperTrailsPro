@@ -9,7 +9,7 @@ public class PlayerManager {
 	
 	private HashMap<Player,STPlayer> players = new HashMap<>();
 	
-	private Storage storage;
+	private static Storage storage;
 	
 	public PlayerManager() {
 		
@@ -19,15 +19,15 @@ public class PlayerManager {
 		
 	}
 	
-	public void loadFromJSON(UUID uuid, String json, String event_json) {
-		
+	public static void loadFromJSON(UUID uuid, String json, String event_json) {
+		System.out.println(uuid + " " + json);
 	}
 	
-	public void preparePlayer(UUID uuid) {
+	public static void preparePlayer(UUID uuid) {
 		storage.loadPlayer(uuid);
 	}
 	
-	public void savePlayer(STPlayer stplayer) {
+	public static void savePlayer(STPlayer stplayer) {
 		storage.savePlayer(stplayer);
 	}
 

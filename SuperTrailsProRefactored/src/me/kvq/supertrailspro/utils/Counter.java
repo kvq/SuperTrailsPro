@@ -21,9 +21,10 @@ public class Counter {
 		this(min,min,max);
 	}
 	
-	public void add(int i) {
-		value+=i;
-		if (value>max_value) value=value - max_value + min_value;
+	public void add(int i) {//15 + 1
+		value+=i; // 16
+		if (value>max_value) value= value - max_value + min_value - 1;
+ 		// 16-15+10=11
 	}
 	
 	public void add() {
