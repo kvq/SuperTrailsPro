@@ -129,8 +129,8 @@ public class STDB implements Storage {
 				} catch (SQLException e) {
 					log.error(e);
 					if (action!=null) {
-						if (action.getRetries() < 3) action.retry(this);
-						else log.error("SQL Error occured. Unable to retrieve user data from database."); 
+						
+						if (!action.retry(this)) log.error("SQL Error occured. Unable to retrieve user data from database."); 
 					}
 				}
 			

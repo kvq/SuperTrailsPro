@@ -3,6 +3,8 @@ package me.kvq.supertrailspro.database;
 import java.sql.ResultSet;
 import java.util.function.Consumer;
 
+import me.kvq.supertrailspro.database.STDB.DatabaseWorker;
+import me.kvq.supertrailspro.utils.STUtils;
 import pro.husk.SQLConsumer;
 
 public class DBAction {
@@ -10,9 +12,14 @@ public class DBAction {
 	private String query;
 	private SQLConsumer<ResultSet> func;
 	private int retries = 0;
+	private DBRequestType requestType;
+	
+	public DBAction(String query) {
+		this.query = query; requestType = DBRequestType.UPDATE;
+	}
 	
 	public DBAction(String query, SQLConsumer<ResultSet> func) {
-		this.query = query; this.func = func;
+		this.query = query; this.func = func; requestType = DBRequestType.QUERY;
 	}
 
 	public String getQuery() {
@@ -27,9 +34,16 @@ public class DBAction {
 		return this.retries;
 	}
 	
-	public DBAction retry() {
+	public boolean retry(DatabaseWorker worker) {
 		this.retries++;
-		return this;
+		if (retries >= STUtils.DATABASE_RETRIES_LIMIT) return false;
+		worker.addQueue(this);
+		return true;
 	}
 
+	public DBRequestType getType() {
+		return requestType;
+	}
+	
 }
+

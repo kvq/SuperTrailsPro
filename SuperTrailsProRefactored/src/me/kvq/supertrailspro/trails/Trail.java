@@ -42,7 +42,7 @@ public abstract class Trail implements PotencialGuiItem {
 		return v;
 	}
 	
-	public int getId(){
+	public int getID(){
 		return id;
 	}
 	

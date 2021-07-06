@@ -3,6 +3,7 @@ package me.kvq.supertrailspro.player;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -15,6 +16,18 @@ public abstract class STPlayer {
 	protected DataContainer data;
 	protected String name;
 	
+	public STPlayer(Player player) {
+		this(player, player.getUniqueId(), player.getName());
+	}
+	
+	public STPlayer(Player player, UUID uuid, String name) {
+		this.player = player; this.uuid = uuid; this.name = name;
+		setEmptyContainers();
+	}
+	
+	private void setEmptyContainers() {
+		data = new DataContainer(this);
+	}
 
 	public void sendMessage(String msg) {
 		if (!playerExists()) return;
@@ -36,11 +49,11 @@ public abstract class STPlayer {
 	}
 
 	public String getJSONData() {
-		return null;
+		return data.toJson();
 	}
 
 	public String getJSONEventData() {
-		return null;
+		return data.getEvent().toJson();
 	}
 	
 	private boolean playerExists() {

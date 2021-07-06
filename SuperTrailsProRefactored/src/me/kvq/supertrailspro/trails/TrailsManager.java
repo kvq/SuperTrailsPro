@@ -42,7 +42,7 @@ public class TrailsManager {
 	}
 	
 	private void registerTrail(Trail t) {
-		trails.put(t.getId(), t);
+		trails.put(t.getID(), t);
 	}
 	
 	public void registerPattern(String name, WingsPattern pattern) {

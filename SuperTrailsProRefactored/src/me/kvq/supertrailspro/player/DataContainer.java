@@ -25,11 +25,28 @@ public class DataContainer {
 	private String pattern;	
 	private ItemStack rain;
 	
+	private STPlayer player;
 	
+	public DataContainer(STPlayer player) {
+		this.player = player;
+		event = new EventDataContainer(player);
+	}
+	
+	public DataContainer(STPlayer player, String json,String eventJson) throws InvalidDataException {
+		this(player);
+		fromJson(json);
+		eventFromJson(eventJson);
+	}
 
 	public Optional<Trail> getTrail() {
 		if (trail.getType() == TrailType.Empty) return Optional.empty();
 		return Optional.ofNullable(trail);
+	}
+	
+	public int getTrailID() {
+		Optional<Trail> trail = getTrail();
+		if (!trail.isPresent()) return 0;
+		return trail.get().getID();
 	}
 	
 	public void setTrail(Trail trail) {
@@ -44,7 +61,11 @@ public class DataContainer {
 		return event;
 	}
 	
-	public void initializeData(String json) throws InvalidDataException{
+	private STPlayer getPlayer() {
+		return player;
+	}
+	
+	public void fromJson(String json) throws InvalidDataException{
 		
 		try {
 			STJson j = new STJson(json);
@@ -64,8 +85,23 @@ public class DataContainer {
 		
 	}
 	
-	public void initializeEventData(String json) throws InvalidDataException{
+	public String toJson() {
+		STJson json = new STJson();
+		json.setInt("id", getTrailID());
+		json.setInt("mode", getModeID());
+		json.setInt("w1", this.wingsColors[0]);
+		json.setInt("w1", this.wingsColors[1]);
+		json.setInt("w2", this.wingsColors[2]);
+		json.setString("pattern", getPattern());
+
+		if (rain!=null) json.setSubJson("rain", itemToJson(rain));
 		
+		return json.toString();
+		
+	}
+	
+	public void eventFromJson(String json) throws InvalidDataException{
+		this.event.fromJson(json);
 	}
 	
 	private ItemStack itemFromJson(STJson subjson) {
@@ -77,11 +113,25 @@ public class DataContainer {
 		return new ItemStack(m,data);
 	}
 	
+	private STJson itemToJson(ItemStack item) {
+		if (item == null) return null;
+		
+		STJson json = new STJson();
+		json.setInt("itemID" ,item.getTypeId());
+		json.setInt("dataID", item.getData().getData());
+		return json;
+		
+	}
+	
 	public boolean isEmpty() {
 		return false;
 	}
 	
 	public int getMode() {
+		return mode;
+	}
+	
+	public int getModeID() {
 		return mode;
 	}
 

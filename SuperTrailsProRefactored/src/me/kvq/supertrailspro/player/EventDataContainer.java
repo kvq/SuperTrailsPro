@@ -18,9 +18,6 @@ public class EventDataContainer {
 	private STPlayer player;
 	
 	
-	public EventDataContainer() {
-		
-	}
 	
 	public EventDataContainer(STPlayer player) {
 		this.player = player;
@@ -78,7 +75,7 @@ public class EventDataContainer {
 		unlocked = ints;
 	}
 	
-	private STJson toJson() {
+	public String toJson() {
 		
 		STJson json = new STJson();
 		List<Integer> ints = Arrays.stream(getUnlocked()).boxed().collect(Collectors.toList());
@@ -87,7 +84,7 @@ public class EventDataContainer {
 		json.setInt("p", craftableMaterials);
 			
 			
-		return json;
+		return json.toString();
 	}
 	
 	private String getPlayerName() {
@@ -95,7 +92,7 @@ public class EventDataContainer {
 		return player.getPlayerName();
 	}
 	
-	private void fromJson(String stringJson) {
+	public void fromJson(String stringJson) {
 		
 		try {
 			STJson json = new STJson(stringJson);
