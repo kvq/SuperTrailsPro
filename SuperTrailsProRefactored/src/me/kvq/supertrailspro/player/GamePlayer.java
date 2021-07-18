@@ -12,21 +12,22 @@ import me.kvq.supertrailspro.exceptions.ObjectNotFoundException;
 public class GamePlayer extends STPlayer {
 
 	public GamePlayer(Player p) {
-		player = p; uuid = p.getUniqueId();
+		super(p);
+		player = p; uuid = p.getUniqueId();	
 	}
 	
 	public GamePlayer(UUID uuid) throws ObjectNotFoundException {
-		Player p = Bukkit.getPlayer(uuid);
-		if (p == null) throw new ObjectNotFoundException("player", uuid.toString());
-		player = p; this.uuid = uuid;
+		super(null,uuid,null);
+		this.player = Bukkit.getPlayer(uuid);
+		if (this.player == null) throw new ObjectNotFoundException("player", uuid.toString());
 	}
 	
 	public void initializeData(String data_json, String event_json) {
-		this.data = new DataContainer();
+		this.data = new DataContainer(this);
 		
 		try {	
-			if (data_json!=null)this.data.initializeData(data_json);
-			if (event_json!=null)this.data.initializeEventData(event_json);
+			if (data_json!=null)this.data.fromJson(data_json);
+			if (event_json!=null)this.data.eventFromJson(event_json);
 		} catch (InvalidDataException e) {
 			SuperTrailsPro.getLogManager().error(e);
 		}

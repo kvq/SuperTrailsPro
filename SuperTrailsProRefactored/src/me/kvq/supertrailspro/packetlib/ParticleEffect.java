@@ -102,7 +102,13 @@ public enum ParticleEffect {
 	
 	SOUL_FIRE("soul_fire", 47, -1),
 	
-	NAUTILUS("NAUTILUS",47,-1);
+	NAUTILUS("NAUTILUS",47,-1),
+	
+	GOLD_SPARK("gold_spark", 47, -1),
+	
+	GLOW_SQUID("glow_squid" , 47, -1),
+	
+	PINK("pinkconfetti", 47, -1);
 	
 	
 	
@@ -118,14 +124,30 @@ public enum ParticleEffect {
 		return 0;
 	}
 	
+	/**
+	 * @return 1.8-1.12 Trail ID
+	 */
+	public String getLegacyName() {
+		return null;
+	}
+	
+	/**
+	 * @return 1.13 Trail ID
+	 */
 	public String getAquaticName() {
 		return null;
 	}
 	
+	/**
+	 * @return 1.14-1.16 Trail ID
+	 */
 	public String getPostAcaticName() {
 		return null;
 	}
 	
+	/**
+	 * @return 1.17+ Trail ID
+	 */
 	public String getCopperName() {
 		return null;
 	}

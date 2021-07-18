@@ -47,7 +47,15 @@ public enum ParticleTrailsEnum {
 	
 	//1.16+ refection used to bypass legacy Material API		
 	SOUL(29, "Soul", ParticleEffect.SOUL, new ItemStack(STUtils.getDirrectMaterial("SOUL_LANTERN"))),
-	SOULFIRE(30, "SoulFire", ParticleEffect.SOUL_FIRE, new ItemStack(STUtils.getDirrectMaterial("SOUL_CAMPFIRE")));
+	SOULFIRE(30, "SoulFire", ParticleEffect.SOUL_FIRE, new ItemStack(STUtils.getDirrectMaterial("SOUL_CAMPFIRE"))),
+	
+	//1.17+
+	GOLDSPARKS(31,"GoldSparks",ParticleEffect.GOLD_SPARK, new ItemStack(Material.GOLD_INGOT)),
+	GLOWSQUID(32,"GlowSquid", ParticleEffect.GLOW_SQUID, new ItemStack(STUtils.getDirrectMaterial("GLOW_INK_SAC"))),
+	PINK(33, "pinkconfetti", ParticleEffect.PINK, new ItemStack(STUtils.getDirrectMaterial("PINK_CANDLE")));
+	
+	
+	
 	
 
 	private int id; 

@@ -10,16 +10,16 @@ import me.kvq.supertrailspro.exceptions.ObjectNotFoundException;
 public class NotLoadedPlayer extends STPlayer {
 
 	public NotLoadedPlayer() {
-		super();
+		super(null,UUID.randomUUID(),null);
 	}
 	
 	public NotLoadedPlayer(Player p) {
-		super();
+		this();
 		player = p; uuid = p.getUniqueId();
 	}
 	
 	public NotLoadedPlayer(UUID uuid) throws ObjectNotFoundException {
-		super();
+		this();
 		Player p = Bukkit.getPlayer(uuid);
 		if (p == null) throw new ObjectNotFoundException("player", uuid.toString());
 		player = p; this.uuid = uuid;
