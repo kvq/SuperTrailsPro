@@ -50,6 +50,7 @@ public enum ParticleTrailsEnum {
 	SOULFIRE(30, "SoulFire", ParticleEffect.SOUL_FIRE, new ItemStack(STUtils.getDirrectMaterial("SOUL_CAMPFIRE"))),
 	
 	//1.17+
+	
 	GOLDSPARKS(31,"GoldSparks",ParticleEffect.GOLD_SPARK, new ItemStack(Material.GOLD_INGOT)),
 	GLOWSQUID(32,"GlowSquid", ParticleEffect.GLOW_SQUID, new ItemStack(STUtils.getDirrectMaterial("GLOW_INK_SAC"))),
 	PINK(33, "pinkconfetti", ParticleEffect.PINK, new ItemStack(STUtils.getDirrectMaterial("PINK_CANDLE")));
